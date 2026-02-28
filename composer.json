@@ -1,0 +1,20 @@
+{
+    "name": "super-kernel/path-resolver",
+    "description": "A robust path abstraction layer for the Super-Kernel framework, providing a unified and extensible interface to manage and resolve application-wide paths with consistency.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SuperKernel\\PathResolver\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SuperKernelTests\\PathResolver\\": "tests/src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.4"
+    }
+}
