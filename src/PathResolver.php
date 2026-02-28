@@ -9,7 +9,6 @@ use function array_filter;
 use function array_pop;
 use function explode;
 use function implode;
-use function preg_match;
 use function str_replace;
 use function str_starts_with;
 use const DIRECTORY_SEPARATOR;
@@ -31,12 +30,6 @@ final class PathResolver implements PathResolverInterface
 
 	public function to(string $segment): PathResolver
 	{
-		if (!preg_match('/^[a-zA-Z0-9_\- ]+$/', $segment)) {
-			throw new InvalidArgumentException(
-				"Invalid path segment: '$segment'. Only alphanumeric, underscore, hyphen and spaces are allowed.",
-			);
-		}
-
 		$target = $this->currentPath . DIRECTORY_SEPARATOR . $segment;
 
 		$normalized = $this->normalize($target);
