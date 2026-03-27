@@ -12,16 +12,13 @@ final class ComposerAdapter implements PathResolveAdapterInterface
 {
 	public function supports(): bool
 	{
-		return getenv('COMPOSER_BINARY') !== false
-		       || getenv('COMPOSER_RUNTIME_BIN_DIR') !== false;
+		return getenv('COMPOSER_BINARY') !== false;
 	}
 
 	public function resolve(): string
 	{
-		$binDir = getenv('COMPOSER_RUNTIME_BIN_DIR');
-
-		if ($binDir) {
-			return dirname($binDir, 2);
+		if (isset($GLOBALS['_composer_bin_dir'])) {
+			return dirname($GLOBALS['_composer_bin_dir'], 2);
 		}
 
 		throw new RuntimeException('Composer environment detected but root path could not be inferred.');
